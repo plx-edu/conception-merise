@@ -13,16 +13,37 @@ datasource db {
 // Individu
 model Individu {
   code              String          @id @default(uuid())
+  
+  // signification: Nom de l'individu
+  // exemple: Terrieur
   nom               String
+
+
+  // signification: Prénom de l'individu
+  // exemple: Alex
   prenom            String
+
+
+  // signification: Date de naissance de l'individu
+  // exemple: 29.02.1988
   dateNaissance     DateTime
+
+
+  // signification: Adresse de l'individu (Ssimplifié)
+  // exemple: 3 rue du Boulevard
   adresse           String
+
+  // spécifique Prisma
   formateur         Formateur[]
   apprenant         Apprenant[]
 }
 
 model Formateur {
+  // signification: Numéro unique de formateur
+  // exemple: 
   codeFormateur     Int          @id @default(autoincrement())
+  
+  // Héritage et spécificité Prisma
   codeIndividu      String
   individu          Individu        @relation(fields: [codeIndividu], references: [code], onDelete: Cascade)
   module            Module[]
@@ -30,13 +51,19 @@ model Formateur {
 }
 
 model Apprenant {
+  // signification: Numéro unique d'Apprenant
+  // exemple:
   codeApprenant     Int          @id @default(autoincrement())
+
+  // Héritage et spécificité Prisma
   codeIndividu      String
   individu          Individu        @relation(fields: [codeIndividu], references: [code], onDelete: Cascade)
 }
 
 // Formation & Module
 model Formation {
+  // signification: Numéro de la Formation
+  // exemple:
   codeFormation     String          @id @default(uuid())
 
   // Liaison avec les modules
@@ -48,17 +75,24 @@ model Formation {
 }
 
 model Module {
+  // signification: Numéro de module
+  // exemple:
   codeModule        String          @id @default(uuid())
   intitule          String
 
-  // Objectif Pédagogique (description ?)
+  // signification: Objectif Pédagogique (description ?)
+  // exemple:
   objectif          String
 
-  // "Simplifié", le contenu peut être/avoir
-  // texte, image, vidéo
+
+  // signification: "Simplifié", le contenu peut être/avoir
+  //                du texte, de l'image, de la vidéo
+  // exemple: ...
   contenu           String
 
-  // Indication de la durée du module en heures
+
+  // signification: Indication de la durée du module en heures
+  // exemple: 05h
   duree             String
   
   // Liaison avec les formations
@@ -74,23 +108,24 @@ model Module {
 
 // Liaison entre une formation et les modules
 model FormationModule {
-  id                Int               @id @default(autoincrement())
-  
-  // chapitrage en versioning semantic
+  @@unique([codeModule, codeFormation], name: "combinaisonFormationModule")
+
+  // signification: chapitrage en versioning semantic
+  // exemple: 1.0
   chapitre          String
 
   // une formation contient plusieurs modules
   // un module peut se retrouver dans plusieurs formations
-  codeModule        String
-  module            Module        @relation(fields: [codeModule], references: [codeModule], onDelete: Cascade)
   codeFormation     String
   formation         Formation        @relation(fields: [codeFormation], references: [codeFormation], onDelete: Cascade)
+  codeModule        String
+  module            Module        @relation(fields: [codeModule], references: [codeModule], onDelete: Cascade)
 }
 
 
 // Liaison entre les modules et les tags
 model ModuleTag{
-  id                Int               @id @default(autoincrement())
+  @@unique([codeModule, codeTag], name: "combinaisonModuleTag")
 
   // un module peut avoir 1 à n tags
   // un tags peut se retrouver dans plusieurs modules
@@ -101,7 +136,11 @@ model ModuleTag{
 }
 
 model Tag {
+  // signification: Numéro de tag
+  // exemple:
   codeTag        String          @id @default(uuid())
+  // signification: Valeur du tag
+  // exemple: Mobile
   valeur         String
 
   // liaison avec les modules
