@@ -58,7 +58,30 @@ model Module {
   // Indication de la durée du module en heures
   duree             String
   
+  // Liste des tags (1, n)
+  moduleTag              ModuleTag[]
+
   // Auteur du module
   codeFormateur     Int
   formateur         Formateur        @relation(fields: [codeFormateur], references: [codeFormateur], onDelete: Cascade)
+}
+
+
+
+model ModuleTag{
+  id                Int               @id @default(autoincrement())
+
+  // Liaison entre les modules et les tags
+  // un module peut avoir 1 à n tags
+  // un tags peut se retrouver dans plusieurs module
+  codeModule        String
+  module            Module        @relation(fields: [codeModule], references: [codeModule], onDelete: Cascade)
+  codeTag           String
+  tag               Tag        @relation(fields: [codeTag], references: [codeTag], onDelete: Cascade)
+}
+
+model Tag {
+  codeTag        String          @id @default(uuid())
+  valeur         String
+  moduleTag              ModuleTag[]
 }
