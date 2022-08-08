@@ -1,0 +1,64 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+// Individu
+model Individu {
+  code              String          @id @default(uuid())
+  nom               String
+  prenom            String
+  dateNaissance     DateTime
+  adresse           String
+  formateur         Formateur[]
+  apprenant         Apprenant[]
+}
+
+model Formateur {
+  codeFormateur     Int          @id @default(autoincrement())
+  codeIndividu      String
+  individu          Individu        @relation(fields: [codeIndividu], references: [code], onDelete: Cascade)
+  module            Module[]
+  formation         Formation[]
+}
+
+model Apprenant {
+  codeApprenant     Int          @id @default(autoincrement())
+  codeIndividu      String
+  individu          Individu        @relation(fields: [codeIndividu], references: [code], onDelete: Cascade)
+}
+
+// Formation & Module
+model Formation {
+  codeFormation     String          @id @default(uuid())
+
+  // Auteur de la formation
+  codeFormateur     Int
+  formateur         Formateur        @relation(fields: [codeFormateur], references: [codeFormateur], onDelete: Cascade)
+}
+
+model Module {
+  codeModule        String          @id @default(uuid())
+  intitule          String
+
+  // Objectif Pédagogique (description ?)
+  objectif          String
+
+  // Simplifié, le contenu peut être
+  // texte, image, vidéo
+  contenu           String
+
+  // Indication de la durée du module en heures
+  duree             String
+  
+  // Auteur du module
+  codeFormateur     Int
+  formateur         Formateur        @relation(fields: [codeFormateur], references: [codeFormateur], onDelete: Cascade)
+}
