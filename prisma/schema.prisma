@@ -66,6 +66,20 @@ model Formation {
   // exemple:
   codeFormation     String          @id @default(uuid())
 
+  // signification: Titre de la formation
+  // exemple: Concepteur Développeur d'Asticot (CDA)
+  titre             String
+
+  // signification: date de créatiob de la formation
+  // exemple: 14.07.2022
+  dateCreation      DateTime        @default(now())
+
+  // signification: date de publication de la formation
+  // exemple: 15.07.2022
+  datePublication   DateTime
+
+  // signification: Listing des modules
+  // exemple: ...
   // Liaison avec les modules
   formationModule   FormationModule[]
 
