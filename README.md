@@ -46,4 +46,5 @@ Un des pires formateurs présente un module pour une formation donnée, il peut 
 
 ## Définition
 
-MERISE (_Méthode d'étude et de réalisation informatique pour les systèmes d'entreprise_)
+MERISE:
+_Méthode d'Étude et de Réalisation Informatique par les Sous-Ensembles ou pour les Systèmes d'Entreprises_
