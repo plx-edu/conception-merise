@@ -39,6 +39,9 @@ model Apprenant {
 model Formation {
   codeFormation     String          @id @default(uuid())
 
+  // Liaison avec les modules
+  formationModule   FormationModule[]
+
   // Auteur de la formation
   codeFormateur     Int
   formateur         Formateur        @relation(fields: [codeFormateur], references: [codeFormateur], onDelete: Cascade)
@@ -51,29 +54,46 @@ model Module {
   // Objectif Pédagogique (description ?)
   objectif          String
 
-  // Simplifié, le contenu peut être
+  // "Simplifié", le contenu peut être/avoir
   // texte, image, vidéo
   contenu           String
 
   // Indication de la durée du module en heures
   duree             String
   
-  // Liste des tags (1, n)
-  moduleTag              ModuleTag[]
+  // Liaison avec les formations
+  formationModule   FormationModule[]
+  
+  // Liaison avec les tags (1, n)
+  moduleTag         ModuleTag[]
 
   // Auteur du module
   codeFormateur     Int
   formateur         Formateur        @relation(fields: [codeFormateur], references: [codeFormateur], onDelete: Cascade)
 }
 
+// Liaison entre une formation et les modules
+model FormationModule {
+  id                Int               @id @default(autoincrement())
+  
+  // chapitrage en versioning semantic
+  chapitre          String
+
+  // une formation contient plusieurs modules
+  // un module peut se retrouver dans plusieurs formations
+  codeModule        String
+  module            Module        @relation(fields: [codeModule], references: [codeModule], onDelete: Cascade)
+  codeFormation     String
+  formation         Formation        @relation(fields: [codeFormation], references: [codeFormation], onDelete: Cascade)
+}
 
 
+// Liaison entre les modules et les tags
 model ModuleTag{
   id                Int               @id @default(autoincrement())
 
-  // Liaison entre les modules et les tags
   // un module peut avoir 1 à n tags
-  // un tags peut se retrouver dans plusieurs module
+  // un tags peut se retrouver dans plusieurs modules
   codeModule        String
   module            Module        @relation(fields: [codeModule], references: [codeModule], onDelete: Cascade)
   codeTag           String
@@ -83,5 +103,9 @@ model ModuleTag{
 model Tag {
   codeTag        String          @id @default(uuid())
   valeur         String
+
+  // liaison avec les modules
   moduleTag              ModuleTag[]
 }
+
+
