@@ -1,0 +1,9 @@
+Individu = (code_individu VARCHAR(50) COLLATE utf8mb4_unicode_ci, adresse VARCHAR(50) COLLATE utf8mb4_unicode_ci, prenom VARCHAR(50) COLLATE utf8mb4_unicode_ci, nom VARCHAR(50) COLLATE utf8mb4_unicode_ci, date_naissance DATE);
+Formateur = (code_formateur COUNTER, #code_individu);
+Apprenant = (code_apprenant COUNTER, #code_individu);
+Formation = (code_formation VARCHAR(50) COLLATE utf8mb4_unicode_ci, titre VARCHAR(50) COLLATE utf8mb4_unicode_ci, date_creation DATETIME, date_publication DATETIME, #code_formateur);
+Lesson = (code_lesson VARCHAR(50) COLLATE utf8mb4_unicode_ci, intitule VARCHAR(50) COLLATE utf8mb4_unicode_ci, objectif VARCHAR(50) COLLATE utf8mb4_unicode_ci, contenu_texte VARCHAR(50) COLLATE utf8mb4_unicode_ci, contenu_image VARCHAR(50) COLLATE utf8mb4_unicode_ci, contenu_video VARCHAR(50) COLLATE utf8mb4_unicode_ci, duree VARCHAR(50) COLLATE utf8mb4_unicode_ci, #code_formateur);
+Tag = (code_tag VARCHAR(50) COLLATE utf8mb4_unicode_ci, valeur VARCHAR(50) COLLATE utf8mb4_unicode_ci);
+avoir = (#code_formation, #code_lesson);
+suivre = (#code_apprenant, #code_formation);
+contenir = (#code_lesson, #code_tag);
