@@ -58,6 +58,9 @@ model Apprenant {
   // Héritage et spécificité Prisma
   codeIndividu      String
   individu          Individu        @relation(fields: [codeIndividu], references: [code], onDelete: Cascade)
+
+  // Liaison Apprenant Inscription
+  inscription       Inscription[]
 }
 
 // Formation & Module
@@ -86,6 +89,9 @@ model Formation {
   // Auteur de la formation
   codeFormateur     Int
   formateur         Formateur        @relation(fields: [codeFormateur], references: [codeFormateur], onDelete: Cascade)
+
+  // Liaison Apprenant Inscription
+  inscription       Inscription[]
 }
 
 model Module {
@@ -128,6 +134,10 @@ model FormationModule {
   // exemple: 1.0
   chapitre          String
 
+  // signification: status du module (validé ou non)
+  // exemple: true
+  status          Boolean
+
   // une formation contient plusieurs modules
   // un module peut se retrouver dans plusieurs formations
   codeFormation     String
@@ -162,3 +172,14 @@ model Tag {
 }
 
 
+// Liaison entre les modules et les tags
+model Inscription {
+  @@unique([codeFormation, codeApprenant], name: "combinaisonInscription")
+
+  // un module peut avoir 1 à n tags
+  // un tags peut se retrouver dans plusieurs modules
+  codeFormation        String
+  formation            Formation        @relation(fields: [codeFormation], references: [codeFormation], onDelete: Cascade)
+  codeApprenant        Int
+  apprenant            Apprenant        @relation(fields: [codeApprenant], references: [codeApprenant], onDelete: Cascade)
+}
