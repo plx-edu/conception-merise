@@ -54,11 +54,22 @@ _Méthode d'Étude et de Réalisation Informatique par les Sous-Ensembles ou pou
 
 ## Règles de Gestion
 
-L’exercice consiste à écrire en français (ou dans la langue de votre choix) une phrase décrivant comment sont associés deux concepts.
+Consiste à écrire en français (ou dans la langue de votre choix) une phrase décrivant comment sont associés les concepts.
+
+- Une *Formation* contient un titre, une date de création et de publication
+  - elle est construite(rédiger) par un formateur (son auteur)
+  - elle contient un ou plusieurs modules
+  - des apprenants s'inscrivent pour suivre une formation
+  - elle est validée lorsque tout les modules sont validés
+
+- Un *Module* (Lesson) contient un intitulé, un objectif, du contenu (texte et/ou image et/ou vidéo), une durée
+  - il peut se trouver dans une ou plusieurs formation
+  
 
 ---
 
 ## Dictionnaire de données
+Le dictionnaire des données est un document qui regroupe toutes les données que vous aurez à conserver dans votre base (et qui figureront donc dans le MCD)
 
 ![Alt text](merise-dictionnaire_donnees.JPG?raw=true "Optional Title")
 
@@ -90,7 +101,13 @@ Un MLD pourra générer plusieurs MPD, si vous décidez d'adapter votre base de 
 
 Le résultat final sera un script SQL qui permettra de créer la base dans le SGBDR.
 
-[Accéder au fichier script SQL](/looping/generated_sql.sql)
+[Accéder au script SQL](/looping/generated_sql.sql)
+
+---
+### Sources:
+
+- https://www.devdesignbook.tiankod.fr/
+- https://ineumann.developpez.com/tutoriels/merise/initiation-merise/
 
 ---
 
