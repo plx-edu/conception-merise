@@ -108,8 +108,9 @@ model Module {
   // signification: "Simplifié", le contenu peut être/avoir
   //                du texte, de l'image, de la vidéo
   // exemple: ...
-  contenu           String
-
+  contenuTexte           String
+  contenuImage           String
+  contenuVideo           String
 
   // signification: Indication de la durée du module en heures
   // exemple: 05h
