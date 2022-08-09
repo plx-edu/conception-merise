@@ -34,7 +34,7 @@ Un dépôt Github recensant :
 
 - [x] Un README explicite et soigné
 - [x] Une définition de l'acronyme MERISE dans le README.md
-- [ ] Un dictionnaire de données
+- [x] Un dictionnaire de données
 - [ ] Des règles de gestion
 - [x] Un MCD
 - [x] Un MLD
@@ -49,3 +49,38 @@ Un dépôt Github recensant :
 
 MERISE:
 _Méthode d'Étude et de Réalisation Informatique par les Sous-Ensembles ou pour les Systèmes d'Entreprises_
+
+---
+
+## Règles de Gestion
+
+L’exercice consiste à écrire en français (ou dans la langue de votre choix) une phrase décrivant comment sont associés deux concepts.
+
+---
+
+## Dictionnaire de données
+
+![Alt text](merise-dictionnaire_donnees.JPG?raw=true "Optional Title")
+
+---
+## MCD - Modèle Conceptuel de Données
+
+Le but du MCD est de décrire de manière formelle les données d'un système d'information (SI). Le MCD décrit la sémantique, c’est-à-dire le sens, attachée à ces données et à leurs rapports, et non l’utilisation qui en est faite. 
+
+[Accéder au fichier MCD](/looping/MCD-conception-merise.JPG)
+
+---
+## MLD - Modèle Logique de Données
+Le Modèle Logique de Données est la transformation du MCD en un ensemble de tables.
+Il est généré à partir du MCD. 
+
+[Accéder au fichier MLD](/looping/MLD.txt)
+
+---
+## MPD - Modèle Physique de Données
+
+[Accéder au fichier MPD](/looping/MPD-conception-merise.JPG)
+
+---
+
+Merci d'avoir lu, à bientot

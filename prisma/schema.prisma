@@ -73,7 +73,7 @@ model Formation {
   // exemple: Concepteur Développeur d'Asticot (CDA)
   titre             String
 
-  // signification: date de créatiob de la formation
+  // signification: date de création de la formation
   // exemple: 14.07.2022
   dateCreation      DateTime        @default(now())
 
