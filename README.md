@@ -34,8 +34,8 @@ Un dépôt Github recensant :
 
 - [x] Un README explicite et soigné
 - [x] Une définition de l'acronyme MERISE dans le README.md
+- [x] Des règles de gestion
 - [x] Un dictionnaire de données
-- [ ] Des règles de gestion
 - [x] Un MCD
 - [x] Un MLD
 - [x] Un MPD
