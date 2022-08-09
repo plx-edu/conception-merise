@@ -55,6 +55,7 @@ CREATE TABLE Tag(
 CREATE TABLE avoir(
   code_formation VARCHAR(50) COLLATE utf8mb4_unicode_ci,
   code_lesson VARCHAR(50) COLLATE utf8mb4_unicode_ci,
+  chapitre VARCHAR(50) COLLATE utf8mb4_unicode_ci NOT NULL,
   status LOGICAL NOT NULL,
   PRIMARY KEY(code_formation, code_lesson),
   FOREIGN KEY(code_formation) REFERENCES Formation(code_formation),
