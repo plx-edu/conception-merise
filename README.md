@@ -56,39 +56,58 @@ _Méthode d'Étude et de Réalisation Informatique par les Sous-Ensembles ou pou
 
 Consiste à écrire en français (ou dans la langue de votre choix) une phrase décrivant comment sont associés les concepts.
 
-- Une *Formation* contient un titre, une date de création et de publication
-  - elle est construite(rédiger) par un formateur (son auteur)
-  - elle contient un ou plusieurs modules
-  - des apprenants s'inscrivent pour suivre une formation
-  - elle est validée lorsque tout les modules sont validés
+- Une **Formation** contient un titre, une date de création et de publication
 
-- Un *Module* (Lesson) contient un intitulé, un objectif, du contenu (texte et/ou image et/ou vidéo), une durée
-  - il peut se trouver dans une ou plusieurs formation
-  
+  - elle est construite(rédiger) par un **formateur** (son auteur)
+  - elle contient un ou plusieurs **modules**
+  - des **apprenants** s'inscrivent pour suivre une formation
+  - elle est validée lorsque tout les modules qui la compose sont validés
+
+- Un **Module** (Lesson) contient un intitulé, un objectif, du contenu (texte et/ou image et/ou vidéo), une durée
+
+  - est construit(écrit) par un formateur
+  - peut se trouver dans une ou plusieurs formations
+  - contient un ou plusieurs **tag**
+  - est validé, ou non, par un apprenant
+
+- Formateur contient un code unique de formateur
+- Apprenant contient un code unique d'apprenant
+
+- Les formateurs et les apprenants ont se type d'information en commun:
+  - nom
+  - prénom
+  - adresse
+  - date de naissance
 
 ---
 
 ## Dictionnaire de données
+
 Le dictionnaire des données est un document qui regroupe toutes les données que vous aurez à conserver dans votre base (et qui figureront donc dans le MCD)
 
 ![Alt text](merise-dictionnaire_donnees.JPG?raw=true "Optional Title")
 
 ---
+
 ## MCD - Modèle Conceptuel de Données
 
-Le but du MCD est de décrire de manière formelle les données d'un système d'information (SI). Le MCD décrit la sémantique, c’est-à-dire le sens, attachée à ces données et à leurs rapports, et non l’utilisation qui en est faite. 
+Le but du MCD est de décrire de manière formelle les données d'un système d'information (SI). Le MCD décrit la sémantique, c’est-à-dire le sens, attachée à ces données et à leurs rapports, et non l’utilisation qui en est faite.
 
 [Accéder au fichier MCD](/looping/MCD-conception-merise.JPG)
 
 ---
+
 ## MLD - Modèle Logique de Données
+
 Le Modèle Logique de Données est la transformation du MCD en un ensemble de tables.
-Il est généré à partir du MCD. 
+Il est généré à partir du MCD.
 
 [Accéder au fichier MLD](/looping/MLD.txt)
 
 ---
+
 ## MPD - Modèle Physique de Données
+
 Le Modèle Physique de Données est la transformation du MLD dans le format d'une base de données.
 
 Le MPD est le schéma correspondant à une base de données spécifique : Oracle, MySQL, PostgreSQL, etc...
@@ -96,7 +115,9 @@ Le MPD est le schéma correspondant à une base de données spécifique : Oracle
 [Accéder au fichier MPD](/looping/MPD-conception-merise.JPG)
 
 ---
+
 ## Script SQL
+
 Un MLD pourra générer plusieurs MPD, si vous décidez d'adapter votre base de données à votre client.
 
 Le résultat final sera un script SQL qui permettra de créer la base dans le SGBDR.
@@ -104,6 +125,7 @@ Le résultat final sera un script SQL qui permettra de créer la base dans le SG
 [Accéder au script SQL](/looping/generated_sql.sql)
 
 ---
+
 ### Sources:
 
 - https://www.devdesignbook.tiankod.fr/
