@@ -31,14 +31,14 @@ Un des pires formateurs présente un module pour une formation donnée, il peut 
 ## Livrables
 
 - Un dépôt Github recensant :
-  - Un README explicite et soigné
-  - Une définition de l'acronyme MERISE dans le README.md
-  - Un dictionnaire de données
-  - Des règles de gestion
-  - Un MCD
-  - Un MLD
-  - Un MPD
-  - Un script SQL de la base de données
+  - [x] Un README explicite et soigné
+  - [x] Une définition de l'acronyme MERISE dans le README.md
+  - [ ] Un dictionnaire de données
+  - [ ] Des règles de gestion
+  - [x] Un MCD
+  - [x] Un MLD
+  - [x] Un MPD
+  - [x] Un script SQL de la base de données
 
 </details>
 
