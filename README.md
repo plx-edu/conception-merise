@@ -78,8 +78,19 @@ Il est généré à partir du MCD.
 
 ---
 ## MPD - Modèle Physique de Données
+Le Modèle Physique de Données est la transformation du MLD dans le format d'une base de données.
+
+Le MPD est le schéma correspondant à une base de données spécifique : Oracle, MySQL, PostgreSQL, etc...
 
 [Accéder au fichier MPD](/looping/MPD-conception-merise.JPG)
+
+---
+## Script SQL
+Un MLD pourra générer plusieurs MPD, si vous décidez d'adapter votre base de données à votre client.
+
+Le résultat final sera un script SQL qui permettra de créer la base dans le SGBDR.
+
+[Accéder au fichier script SQL](/looping/generated_sql.sql)
 
 ---
 
