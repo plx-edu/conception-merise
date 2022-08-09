@@ -73,7 +73,7 @@ Consiste à écrire en français (ou dans la langue de votre choix) une phrase d
 - Formateur contient un code unique de formateur
 - Apprenant contient un code unique d'apprenant
 
-- Les formateurs et les apprenants ont se type d'information en commun:
+- Les formateurs et les apprenants ont ce types d'information en commun:
   - nom
   - prénom
   - adresse
