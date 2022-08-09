@@ -105,12 +105,11 @@ model Module {
   objectif          String
 
 
-  // signification: "Simplifié", le contenu peut être/avoir
-  //                du texte, de l'image, de la vidéo
-  // exemple: ...
-  contenuTexte           String
-  contenuImage           String
-  contenuVideo           String
+  // signification: "Simplifié", le contenu peut avoir
+  //                soit du texte, de l'image, de la vidéo
+  contenuTexte           String?
+  contenuImage           String?
+  contenuVideo           String?
 
   // signification: Indication de la durée du module en heures
   // exemple: 05h
@@ -137,7 +136,7 @@ model FormationModule {
 
   // signification: status du module (validé ou non)
   // exemple: true
-  status          Boolean
+  status            Boolean
 
   // une formation contient plusieurs modules
   // un module peut se retrouver dans plusieurs formations
@@ -173,12 +172,12 @@ model Tag {
 }
 
 
-// Liaison entre les modules et les tags
+// Liaison entre les apprenant et les formations
 model Inscription {
   @@unique([codeFormation, codeApprenant], name: "combinaisonInscription")
 
-  // un module peut avoir 1 à n tags
-  // un tags peut se retrouver dans plusieurs modules
+  // un apprenant peut suivre plusieurs formations
+  // une formation peut être suivie par plusieurs apprenants
   codeFormation        String
   formation            Formation        @relation(fields: [codeFormation], references: [codeFormation], onDelete: Cascade)
   codeApprenant        Int
