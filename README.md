@@ -58,20 +58,22 @@ Consiste à écrire en français (ou dans la langue de votre choix) une phrase d
 
 - Une **Formation** contient un titre, une date de création et de publication
 
-  - elle est construite(rédiger) par un **formateur** (son auteur)
-  - elle contient un ou plusieurs **modules**
-  - des **apprenants** s'inscrivent pour suivre une formation
+  - elle est construite(gérer) par un _formateur_ (son auteur)
+  - elle contient un ou plusieurs _modules_ (chapitres)
+  - des _apprenants_ s'inscrivent pour suivre une ou plusieur formations
   - elle est validée lorsque tout les modules qui la compose sont validés
 
 - Un **Module** (Lesson) contient un intitulé, un objectif, du contenu (texte et/ou image et/ou vidéo), une durée
 
-  - est construit(écrit) par un formateur
+  - est construit(rédiger) par un formateur
   - peut se trouver dans une ou plusieurs formations
   - contient un ou plusieurs **tag**
-  - est validé, ou non, par un apprenant
+  - peut être validé, ou non, par un apprenant
+    - à travers une formation
+    - ou tel quel
 
-- Formateur contient un code unique de formateur
-- Apprenant contient un code unique d'apprenant
+- **Formateur** contient un code unique de formateur
+- **Apprenant** contient un code unique d'apprenant
 
 - Les formateurs et les apprenants ont ce types d'information en commun:
   - nom
@@ -116,13 +118,17 @@ Il est généré à partir du MCD.
 
 **Tag** = (code_tag VARCHAR(50), valeur VARCHAR(50));
 
-**avoir** = (#code_formation, #code_lesson, chapitre VARCHAR(50), status LOGICAL);
+**Chapitre** = (code_chapitre VARCHAR(50), num_chapitre VARCHAR(50), #code_lesson);
 
 **suivre** = (#code_apprenant, #code_formation);
 
 **contenir** = (#code_lesson, #code_tag);
 
 **completer** = (#code_apprenant, #code_lesson, status LOGICAL);
+
+**composer** = (#code_formation, #code_chapitre);
+
+**valider** = (#code_apprenant, #code_chapitre, status LOGICAL);
 
 </details>
 

@@ -52,13 +52,11 @@ CREATE TABLE Tag(
   PRIMARY KEY(code_tag)
 );
 
-CREATE TABLE avoir(
-  code_formation VARCHAR(50),
-  code_lesson VARCHAR(50),
-  chapitre VARCHAR(50) NOT NULL,
-  status LOGICAL NOT NULL,
-  PRIMARY KEY(code_formation, code_lesson),
-  FOREIGN KEY(code_formation) REFERENCES Formation(code_formation),
+CREATE TABLE Chapitre(
+  code_chapitre VARCHAR(50),
+  num_chapitre VARCHAR(50) NOT NULL,
+  code_lesson VARCHAR(50) NOT NULL,
+  PRIMARY KEY(code_chapitre),
   FOREIGN KEY(code_lesson) REFERENCES Lesson(code_lesson)
 );
 
@@ -85,4 +83,21 @@ CREATE TABLE completer(
   PRIMARY KEY(code_apprenant, code_lesson),
   FOREIGN KEY(code_apprenant) REFERENCES Apprenant(code_apprenant),
   FOREIGN KEY(code_lesson) REFERENCES Lesson(code_lesson)
+);
+
+CREATE TABLE composer(
+  code_formation VARCHAR(50),
+  code_chapitre VARCHAR(50),
+  PRIMARY KEY(code_formation, code_chapitre),
+  FOREIGN KEY(code_formation) REFERENCES Formation(code_formation),
+  FOREIGN KEY(code_chapitre) REFERENCES Chapitre(code_chapitre)
+);
+
+CREATE TABLE valider(
+  code_apprenant INT,
+  code_chapitre VARCHAR(50),
+  status LOGICAL,
+  PRIMARY KEY(code_apprenant, code_chapitre),
+  FOREIGN KEY(code_apprenant) REFERENCES Apprenant(code_apprenant),
+  FOREIGN KEY(code_chapitre) REFERENCES Chapitre(code_chapitre)
 );
