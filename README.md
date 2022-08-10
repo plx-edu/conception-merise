@@ -93,7 +93,7 @@ Le dictionnaire des données est un document qui regroupe toutes les données qu
 
 Le but du MCD est de décrire de manière formelle les données d'un système d'information (SI). Le MCD décrit la sémantique, c’est-à-dire le sens, attachée à ces données et à leurs rapports, et non l’utilisation qui en est faite.
 
-[Accéder au fichier MCD](/looping/MCD-conception-merise.JPG)
+[Accéder au schéma MCD](/looping/MCD-conception-merise.JPG)
 
 ---
 
@@ -102,7 +102,31 @@ Le but du MCD est de décrire de manière formelle les données d'un système d'
 Le Modèle Logique de Données est la transformation du MCD en un ensemble de tables.
 Il est généré à partir du MCD.
 
-[Accéder au fichier MLD](/looping/MLD.txt)
+<details><summary>MLD Textuel</summary>
+
+**Individu** = (code_individu VARCHAR(50), adresse VARCHAR(50), prenom VARCHAR(50), nom VARCHAR(50), date_naissance DATE);
+
+**Formateur** = (code_formateur COUNTER, #code_individu);
+
+**Apprenant** = (code_apprenant COUNTER, #code_individu);
+
+**Formation** = (code_formation VARCHAR(50), titre VARCHAR(50), date_creation DATETIME, date_publication DATETIME, #code_formateur);
+
+**Lesson** = (code_lesson VARCHAR(50), intitule VARCHAR(50), objectif VARCHAR(50), contenu_texte VARCHAR(50), contenu_image VARCHAR(50), contenu_video VARCHAR(50), duree VARCHAR(50), #code_formateur);
+
+**Tag** = (code_tag VARCHAR(50), valeur VARCHAR(50));
+
+**avoir** = (#code_formation, #code_lesson, chapitre VARCHAR(50), status LOGICAL);
+
+**suivre** = (#code_apprenant, #code_formation);
+
+**contenir** = (#code_lesson, #code_tag);
+
+**completer** = (#code_apprenant, #code_lesson, status LOGICAL);
+
+</details>
+
+[Accéder au schéma MLD](/looping/MLD-conception-merise.JPG)
 
 ---
 
@@ -112,7 +136,7 @@ Le Modèle Physique de Données est la transformation du MLD dans le format d'un
 
 Le MPD est le schéma correspondant à une base de données spécifique : Oracle, MySQL, PostgreSQL, etc...
 
-[Accéder au fichier MPD](/looping/MPD-conception-merise.JPG)
+[Accéder au schéma MPD](/looping/MPD-conception-merise.JPG)
 
 ---
 
