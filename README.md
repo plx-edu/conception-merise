@@ -58,20 +58,22 @@ Consiste à écrire en français (ou dans la langue de votre choix) une phrase d
 
 - Une **Formation** contient un titre, une date de création et de publication
 
-  - elle est construite(rédiger) par un **formateur** (son auteur)
-  - elle contient un ou plusieurs **modules**
-  - des **apprenants** s'inscrivent pour suivre une formation
+  - elle est construite(gérer) par un _formateur_ (son auteur)
+  - elle contient un ou plusieurs _modules_ (chapitres)
+  - des _apprenants_ s'inscrivent pour suivre une ou plusieur formations
   - elle est validée lorsque tout les modules qui la compose sont validés
 
 - Un **Module** (Lesson) contient un intitulé, un objectif, du contenu (texte et/ou image et/ou vidéo), une durée
 
-  - est construit(écrit) par un formateur
+  - est construit(rédiger) par un formateur
   - peut se trouver dans une ou plusieurs formations
   - contient un ou plusieurs **tag**
-  - est validé, ou non, par un apprenant
+  - peut être validé, ou non, par un apprenant
+    - à travers une formation
+    - ou tel quel
 
-- Formateur contient un code unique de formateur
-- Apprenant contient un code unique d'apprenant
+- **Formateur** contient un code unique de formateur
+- **Apprenant** contient un code unique d'apprenant
 
 - Les formateurs et les apprenants ont ce types d'information en commun:
   - nom
@@ -93,7 +95,7 @@ Le dictionnaire des données est un document qui regroupe toutes les données qu
 
 Le but du MCD est de décrire de manière formelle les données d'un système d'information (SI). Le MCD décrit la sémantique, c’est-à-dire le sens, attachée à ces données et à leurs rapports, et non l’utilisation qui en est faite.
 
-[Accéder au fichier MCD](/looping/MCD-conception-merise.JPG)
+[Accéder au schéma MCD](/looping/MCD-conception-merise.JPG)
 
 ---
 
@@ -102,7 +104,35 @@ Le but du MCD est de décrire de manière formelle les données d'un système d'
 Le Modèle Logique de Données est la transformation du MCD en un ensemble de tables.
 Il est généré à partir du MCD.
 
-[Accéder au fichier MLD](/looping/MLD.txt)
+<details><summary>MLD Textuel</summary>
+
+**Individu** = (code_individu VARCHAR(50), adresse VARCHAR(50), prenom VARCHAR(50), nom VARCHAR(50), date_naissance DATE);
+
+**Formateur** = (code_formateur COUNTER, #code_individu);
+
+**Apprenant** = (code_apprenant COUNTER, #code_individu);
+
+**Formation** = (code_formation VARCHAR(50), titre VARCHAR(50), date_creation DATETIME, date_publication DATETIME, #code_formateur);
+
+**Lesson** = (code_lesson VARCHAR(50), intitule VARCHAR(50), objectif VARCHAR(50), contenu_texte VARCHAR(50), contenu_image VARCHAR(50), contenu_video VARCHAR(50), duree VARCHAR(50), #code_formateur);
+
+**Tag** = (code_tag VARCHAR(50), valeur VARCHAR(50));
+
+**Chapitre** = (code_chapitre VARCHAR(50), num_chapitre VARCHAR(50), #code_lesson);
+
+**suivre** = (#code_apprenant, #code_formation);
+
+**contenir** = (#code_lesson, #code_tag);
+
+**completer** = (#code_apprenant, #code_lesson, status LOGICAL);
+
+**composer** = (#code_formation, #code_chapitre);
+
+**valider** = (#code_apprenant, #code_chapitre, status LOGICAL);
+
+</details>
+
+[Accéder au schéma MLD](/looping/MLD-conception-merise.JPG)
 
 ---
 
@@ -112,7 +142,7 @@ Le Modèle Physique de Données est la transformation du MLD dans le format d'un
 
 Le MPD est le schéma correspondant à une base de données spécifique : Oracle, MySQL, PostgreSQL, etc...
 
-[Accéder au fichier MPD](/looping/MPD-conception-merise.JPG)
+[Accéder au schéma MPD](/looping/MPD-conception-merise.JPG)
 
 ---
 
